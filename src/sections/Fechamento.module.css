@@ -1,0 +1,35 @@
+.fechamento {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.conteudo {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(96px, 15vw, 190px);
+  text-align: center;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(42px, 10.5vw, 148px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  font-variation-settings:
+    'opsz' 144,
+    'wght' 420,
+    'SOFT' 20,
+    'WONK' 0;
+}
+
+.texto {
+  margin: 26px auto 38px;
+  max-width: 38ch;
+  font-size: 15.5px;
+  color: color-mix(in srgb, var(--cream) 62%, transparent);
+}

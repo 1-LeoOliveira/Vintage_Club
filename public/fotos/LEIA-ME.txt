@@ -1,0 +1,31 @@
+FOTOS DO SITE
+=============
+
+pecas/        uma foto por peça, retrato 3:4 (1000 x 1333 px)
+editorial/    duas por coleção, usadas na banda clara — <id>-a.jpg e <id>-b.jpg
+instagram/    seis quadradas (700 x 700 px) para a grade do rodapé
+
+
+ATENÇÃO: as fotos atuais são de banco de imagem
+-----------------------------------------------
+Nenhuma delas é peça real da Vintage Club. São fotos do Unsplash
+(licença livre, uso comercial permitido) escolhidas só para dar
+volume visual ao layout.
+
+Uma foto genérica de pilha de roupa sob o nome "Detroit Jacket
+Blanket-Lined, Carhartt 1998" é propaganda enganosa. Troque todas
+antes de publicar.
+
+
+COMO TROCAR
+-----------
+1. Substitua o arquivo em pecas/ mantendo o mesmo nome, ou
+2. Aponte outro caminho em src/data/colecoes.ts:
+
+   fotos: ['/fotos/pecas/vc-003-01.jpg', '/fotos/pecas/vc-003-01-costas.jpg'],
+
+A primeira foto da lista é a capa do card. As demais aparecem na
+ficha da peça. Com a lista vazia, a peça volta a mostrar o padrão
+de sulcos do logo.
+
+Formato: retrato 3:4, JPG, fundo liso, 1000 x 1333 px.

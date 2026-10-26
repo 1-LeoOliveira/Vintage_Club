@@ -1,0 +1,23 @@
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(36px, 4.4vw, 62px) clamp(20px, 2.6vw, 38px);
+}
+
+@media (max-width: 900px) {
+  .grade {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vazio {
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-top: 1px solid color-mix(in srgb, var(--sand) 16%, transparent);
+  color: color-mix(in srgb, var(--cream) 58%, transparent);
+  max-width: 44ch;
+}

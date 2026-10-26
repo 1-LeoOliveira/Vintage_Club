@@ -1,0 +1,41 @@
+/* Moldura de imagem. Sem foto, mostra o padrão de sulcos do logo —
+   um estado vazio desenhado, não uma caixa quebrada. */
+.moldura {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: var(--ink-2);
+  border: 1px solid color-mix(in srgb, var(--sand) 10%, transparent);
+}
+
+.vazia::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-radial-gradient(
+    circle at 50% 46%,
+    color-mix(in srgb, var(--sand) 13%, transparent) 0 1px,
+    transparent 1px 11px
+  );
+}
+
+.foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* sobre a banda areia */
+.clara {
+  background-color: var(--brown);
+  border-color: color-mix(in srgb, var(--brown) 22%, transparent);
+}
+.clara.vazia::before {
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--sand) 20%, transparent) 0 1px,
+    transparent 1px 10px
+  );
+}

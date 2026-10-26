@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Vintage Club — garimpo autoral de peças vintage. Uma unidade de cada. Coleções em drops.">
+<meta name="theme-color" content="#16100D">
+<meta property="og:title" content="Vintage Club — Exclusive Collection">
+<meta property="og:description" content="Peças selecionadas para quem não segue tendências. Cria as próprias.">
+<meta property="og:type" content="website">
+<style>
+  html{ color-scheme: dark }
+  body{ margin:0; font: 14px system-ui, sans-serif }
+  img{ max-width:100% }
+  [hidden]{ display:none !important }
+</style>
+<title>Vintage Club</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,0..100,0..1&display=swap">
+
+<style>
+/* Layout: bandas full-bleed alternando espresso e areia; grade editorial de 12 colunas
+   com muito espaço negativo. O motivo dos sulcos do logo (vinil) organiza heroi,
+   placeholders de foto e marcadores de seção. Design de tema único, assumido. */
+:root{
+  --ink:        #16100D;  /* espresso profundo, o preto quente da marca */
+  --ink-2:      #211812;  /* superfície elevada sobre o espresso */
+  --brown:      #4A382E;  /* marrom do monograma */
+  --sand:       #D8CBBC;  /* areia do logo */
+  --cream:      #EFE6D9;  /* texto sobre escuro */
+  --brass:      #B4884A;  /* o detalhe metálico, usado com parcimônia */
+
+  --display: 'Fraunces', 'Hoefler Text', Georgia, serif;
+  --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --gut-l: max(20px, env(safe-area-inset-left, 0px));
+  --gut-r: max(20px, env(safe-area-inset-right, 0px));
+  --max: 1280px;
+
+  color-scheme: dark;
+}
+
+*{ box-sizing: border-box }
+
+body{
+  margin:0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* banda acima do header fixo, para nada subir por baixo da barra do sistema */
+body::before{
+  content:""; position:fixed; inset:0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 60; background: var(--ink);
+}
+
+.wrap{
+  width:100%; max-width: var(--max); margin-inline:auto;
+  padding-left: var(--gut-l); padding-right: var(--gut-r);
+}
+
+a{ color: inherit }
+img{ display:block; max-width:100% }
+
+:is(a,button,summary):focus-visible{
+  outline: 2px solid var(--brass); outline-offset: 4px; border-radius: 1px;
+}
+
+/* ─────────── tipografia ─────────── */
+.display{
+  font-family: var(--display);
+  font-weight: 400;
+  font-variation-settings: 'opsz' 144, 'SOFT' 40, 'WONK' 1;
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  margin:0;
+}
+.eyebrow{
+  font-size: 11px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase;
+  margin:0; color: var(--brass);
+}
+.lede{
+  font-size: clamp(16px, 1.6vw, 19px); line-height: 1.55; max-width: 34ch;
+  color: color-mix(in srgb, var(--cream) 76%, transparent); margin:0;
+}
+.meta{
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 400; font-variant-numeric: tabular-nums;
+}
+
+/* ─────────── motivo: sulcos de vinil ─────────── */
+.grooves{
+  background-image: repeating-radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    color-mix(in srgb, var(--sand) 16%, transparent) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+/* ─────────── header ─────────── */
+header{
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid color-mix(in srgb, var(--sand) 12%, transparent);
+}
+header .wrap{
+  display:flex; align-items:center; justify-content: space-between; gap: 24px;
+  padding-block: 14px;
+}
+.brand{ display:flex; align-items:center; gap:12px; text-decoration:none }
+.brand img{ width: 34px; height:34px; border-radius: 2px }
+.brand span{
+  font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 500;
+}
+nav.links{ display:flex; gap: 30px }
+nav.links a{
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  text-decoration:none; color: color-mix(in srgb, var(--cream) 62%, transparent);
+  transition: color .3s ease;
+}
+nav.links a:hover{ color: var(--cream) }
+@media (max-width: 860px){ nav.links{ display:none } }
+
+/* ─────────── hero ─────────── */
+.hero{ position: relative; overflow: hidden; background: var(--ink) }
+.hero .wrap{ padding-block: clamp(72px, 13vw, 150px) clamp(56px, 9vw, 110px); position: relative; z-index: 2 }
+
+/* o disco: sulcos concêntricos gigantes, saindo pela direita */
+.disc{
+  position:absolute; z-index:1; pointer-events:none;
+  width: min(820px, 105vw); aspect-ratio: 1; border-radius: 50%;
+  right: -22%; top: 50%; translate: 0 -50%;
+  --gx: 50%; --gy: 50%;
+  mask-image: radial-gradient(circle, #000 38%, transparent 72%);
+  opacity: .62;
+  animation: spin 190s linear infinite;
+}
+.disc::after{
+  content:""; position:absolute; inset:38%; border-radius:50%;
+  background: var(--sand); opacity:.1;
+}
+@keyframes spin{ to{ rotate: 360deg } }
+
+.hero-top{
+  display:flex; flex-wrap:wrap; gap: 14px 28px; align-items:baseline;
+  padding-bottom: clamp(36px, 6vw, 68px);
+}
+.hero-top .meta{ color: color-mix(in srgb, var(--cream) 48%, transparent) }
+
+h1.display{
+  font-size: clamp(52px, 13.5vw, 184px);
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  font-variation-settings: 'opsz' 144, 'wght' 450, 'SOFT' 20, 'WONK' 0;
+}
+h1 .it{
+  display:block; text-transform:none; font-style: italic;
+  font-size: .345em; letter-spacing: -0.01em; color: var(--brass);
+  font-variation-settings: 'opsz' 90, 'wght' 300, 'SOFT' 80, 'WONK' 1;
+  margin-top: .14em;
+}
+.hero-foot{
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+  gap: 34px; padding-top: clamp(38px, 6vw, 72px);
+}
+
+/* ─────────── botões ─────────── */
+.btn{
+  display:inline-flex; align-items:center; gap: 14px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+  text-decoration:none; padding: 15px 26px; border-radius: 1px;
+  background: var(--cream); color: var(--ink);
+  border: 1px solid var(--cream);
+  transition: background .35s ease, color .35s ease;
+}
+.btn:hover{ background: transparent; color: var(--cream) }
+.btn .arw{ transition: translate .35s ease }
+.btn:hover .arw{ translate: 5px 0 }
+.btn.ghost{ background: transparent; color: var(--cream);
+  border-color: color-mix(in srgb, var(--sand) 34%, transparent) }
+.btn.ghost:hover{ background: var(--cream); color: var(--ink); border-color: var(--cream) }
+.btn.dark{ background: var(--ink); color: var(--cream); border-color: var(--ink) }
+.btn.dark:hover{ background: transparent; color: var(--ink) }
+
+/* ─────────── cabeçalho de seção ─────────── */
+section{ scroll-margin-top: 80px }
+.band{ background: var(--ink) }
+.band.sand{ background: var(--sand); color: var(--brown) }
+.band .wrap{ padding-block: clamp(76px, 11vw, 140px) }
+
+.shead{
+  display:grid; grid-template-columns: 1fr auto; gap: 20px 48px; align-items:end;
+  padding-bottom: clamp(44px, 6vw, 76px);
+}
+.shead h2{
+  font-family: var(--display); margin:0; font-weight:400;
+  font-size: clamp(34px, 5.4vw, 62px); line-height: 1; letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-variation-settings: 'opsz' 120, 'wght' 420, 'SOFT' 30, 'WONK' 0;
+}
+.shead p{
+  margin: 14px 0 0; max-width: 42ch; font-size: 15px;
+  color: color-mix(in srgb, currentColor 66%, transparent);
+}
+.shead .meta{ color: color-mix(in srgb, currentColor 52%, transparent); white-space:nowrap }
+@media (max-width: 680px){ .shead{ grid-template-columns: 1fr } .shead .meta{ white-space: normal } }
+
+/* ─────────── coleção ─────────── */
+.pieces{
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(36px, 4.4vw, 62px) clamp(20px, 2.6vw, 38px);
+}
+@media (max-width: 900px){ .pieces{ grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 560px){ .pieces{ grid-template-columns: 1fr } }
+
+.piece{ display:flex; flex-direction: column; min-width: 0 }
+.shot{
+  position: relative; aspect-ratio: 3/4; max-width:100%; overflow:hidden;
+  background-color: var(--ink-2);
+  background-image: var(--foto, none);
+  background-size: cover; background-position: center;
+  border: 1px solid color-mix(in srgb, var(--sand) 10%, transparent);
+}
+/* sulcos só aparecem enquanto não houver foto real na peça */
+.shot::before{
+  content:""; position:absolute; inset:0;
+  background-image: repeating-radial-gradient(circle at 50% 46%,
+    color-mix(in srgb, var(--sand) 13%, transparent) 0 1px, transparent 1px 11px);
+  opacity: var(--groove-op, 1);
+}
+.piece[style*="--foto"] .shot::before{ display:none }
+.shot .tag{
+  position:absolute; left:0; top:0; z-index:2;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+  padding: 7px 11px; background: var(--brass); color: var(--ink);
+}
+.shot .tag.sold{ background: color-mix(in srgb, var(--ink) 86%, transparent); color: color-mix(in srgb, var(--cream) 60%, transparent) }
+.shot img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1 }
+
+.piece.sold .shot{ opacity: .5 }
+
+.pinfo{ display:flex; flex-direction:column; gap: 4px; padding-top: 18px }
+.pinfo .brandname{
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--brass);
+}
+.pinfo h3{
+  margin:0; font-family: var(--display); font-weight: 400;
+  font-size: clamp(19px, 1.9vw, 23px); line-height: 1.18; letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 40, 'wght' 400, 'SOFT' 50, 'WONK' 1;
+}
+.pspec{
+  display:flex; flex-wrap:wrap; gap: 4px 10px; margin-top: 7px;
+  font-size: 11px; letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--cream) 50%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+.pspec span:not(:last-child)::after{ content:" ·"; margin-left: 8px; opacity:.6 }
+.prow{
+  display:flex; align-items:center; justify-content:space-between; gap: 16px;
+  margin-top: 16px; padding-top: 15px;
+  border-top: 1px solid color-mix(in srgb, var(--sand) 13%, transparent);
+}
+.price{ font-size: 15px; font-variant-numeric: tabular-nums; letter-spacing: .01em }
+.ask{
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration:none;
+  color: var(--cream); border-bottom: 1px solid color-mix(in srgb, var(--brass) 70%, transparent);
+  padding-bottom: 3px; transition: color .3s ease, border-color .3s ease;
+}
+.ask:hover{ color: var(--brass); border-color: var(--brass) }
+.ask[aria-disabled="true"]{
+  color: color-mix(in srgb, var(--cream) 38%, transparent);
+  border-color: transparent; pointer-events:none;
+}
+
+/* ─────────── editorial ─────────── */
+.editorial{ display:grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 80px); align-items:center }
+@media (max-width: 820px){ .editorial{ grid-template-columns: 1fr } }
+.ed-copy h2{
+  font-family: var(--display); margin:0; font-weight:400;
+  font-size: clamp(40px, 7vw, 86px); line-height: .95; letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-variation-settings: 'opsz' 144, 'wght' 400, 'SOFT' 20, 'WONK' 0;
+}
+.ed-copy h2 em{
+  display:block; font-style: italic; text-transform:none; color: var(--brass);
+  font-size: .5em; letter-spacing: -0.01em; margin-top: .1em;
+  font-variation-settings: 'opsz' 90, 'wght' 300, 'SOFT' 80, 'WONK' 1;
+}
+.ed-copy p{
+  margin: 28px 0 0; max-width: 46ch; font-size: 15.5px; line-height: 1.75;
+  color: color-mix(in srgb, var(--brown) 78%, transparent);
+}
+.ed-stack{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px }
+.ed-stack .frame{
+  position:relative; background: var(--brown); overflow:hidden;
+  border: 1px solid color-mix(in srgb, var(--brown) 22%, transparent);
+}
+.ed-stack .frame:nth-child(1){ aspect-ratio: 3/4 }
+.ed-stack .frame:nth-child(2){ aspect-ratio: 3/4; margin-top: clamp(24px, 5vw, 58px) }
+.ed-stack .frame::before{
+  content:""; position:absolute; inset:0;
+  background-image: repeating-radial-gradient(circle at 50% 50%,
+    color-mix(in srgb, var(--sand) 20%, transparent) 0 1px, transparent 1px 10px);
+}
+
+/* ─────────── drop ─────────── */
+.drop{
+  display:grid; grid-template-columns: 1fr auto; gap: clamp(32px, 5vw, 72px); align-items:center;
+  border-top: 1px solid color-mix(in srgb, var(--sand) 16%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--sand) 16%, transparent);
+  padding-block: clamp(40px, 6vw, 68px);
+}
+@media (max-width: 820px){ .drop{ grid-template-columns: 1fr } }
+.drop h3{
+  margin: 16px 0 0; font-family: var(--display); font-weight:400;
+  font-size: clamp(36px, 6.6vw, 74px); line-height: .96; letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-variation-settings: 'opsz' 144, 'wght' 420, 'SOFT' 20, 'WONK' 0;
+}
+.drop .when{
+  margin: 18px 0 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--cream) 62%, transparent); font-variant-numeric: tabular-nums;
+}
+.clock{ display:flex; gap: clamp(18px, 3vw, 40px) }
+.clock div{ text-align:center; min-width: 58px }
+.clock strong{
+  display:block; font-family: var(--display); font-weight: 400;
+  font-size: clamp(38px, 5.4vw, 62px); line-height: 1; letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: 'opsz' 120, 'wght' 400, 'SOFT' 30, 'WONK' 0;
+}
+.clock span{
+  display:block; margin-top: 10px; font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: color-mix(in srgb, var(--cream) 45%, transparent);
+}
+.drop-cta{ display:flex; flex-wrap:wrap; align-items:center; gap: 20px 28px; padding-top: 32px }
+.drop-cta p{ margin:0; font-size: 13px; color: color-mix(in srgb, var(--cream) 55%, transparent) }
+
+/* ─────────── curadoria ─────────── */
+.criteria{ display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 56px) }
+@media (max-width: 760px){ .criteria{ grid-template-columns: 1fr } }
+.crit{ display:flex; flex-direction:column; gap: 12px; min-width:0 }
+.crit .ring{
+  width: 42px; height: 42px; border-radius: 50%;
+  background-image: repeating-radial-gradient(circle at 50% 50%,
+    color-mix(in srgb, var(--brass) 85%, transparent) 0 1px, transparent 1px 5px);
+}
+.crit h3{
+  margin: 6px 0 0; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  font-weight: 600;
+}
+.crit p{
+  margin:0; font-size: 14.5px; line-height: 1.7; max-width: 32ch;
+  color: color-mix(in srgb, var(--cream) 62%, transparent);
+}
+
+/* ─────────── instagram ─────────── */
+.ig-grid{
+  display:grid; grid-template-columns: repeat(6, 1fr); gap: 10px;
+}
+@media (max-width: 900px){ .ig-grid{ grid-template-columns: repeat(3, 1fr) } }
+.ig-grid .cell{
+  aspect-ratio: 1; max-width:100%; background: var(--ink-2);
+  background-image: repeating-radial-gradient(circle at 50% 50%,
+    color-mix(in srgb, var(--sand) 14%, transparent) 0 1px, transparent 1px 8px);
+  border: 1px solid color-mix(in srgb, var(--sand) 9%, transparent);
+  transition: opacity .35s ease;
+}
+.ig-grid .cell:hover{ opacity: .6 }
+.ig-foot{ display:flex; flex-wrap:wrap; align-items:center; gap: 18px 26px; padding-top: 38px }
+
+/* ─────────── CTA final ─────────── */
+.closing{ position: relative; overflow:hidden; background: var(--ink) }
+.closing .wrap{ position:relative; z-index:2; padding-block: clamp(96px, 15vw, 190px); text-align:center }
+.closing .disc{
+  right: auto; left: 50%; top: 50%; translate: -50% -50%;
+  width: min(1000px, 130vw); opacity: .4; animation-duration: 240s;
+}
+.closing h2{
+  font-family: var(--display); margin:0; font-weight: 400;
+  font-size: clamp(42px, 10.5vw, 148px); line-height: .9; letter-spacing: -0.04em;
+  text-transform: uppercase; text-wrap: balance;
+  font-variation-settings: 'opsz' 144, 'wght' 420, 'SOFT' 20, 'WONK' 0;
+}
+.closing p{
+  margin: 26px auto 38px; max-width: 38ch; font-size: 15.5px;
+  color: color-mix(in srgb, var(--cream) 62%, transparent);
+}
+
+/* ─────────── rodapé ─────────── */
+footer{ border-top: 1px solid color-mix(in srgb, var(--sand) 12%, transparent); background: var(--ink) }
+footer .wrap{
+  padding-block: 44px; display:flex; flex-wrap:wrap; gap: 26px 40px;
+  align-items:center; justify-content:space-between;
+}
+footer .fnav{ display:flex; flex-wrap:wrap; gap: 24px }
+footer a, footer .meta{ color: color-mix(in srgb, var(--cream) 52%, transparent); text-decoration:none }
+footer .fnav a{ font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; transition: color .3s ease }
+footer .fnav a:hover{ color: var(--cream) }
+.contact{
+  font-size: 12px; letter-spacing: .06em;
+  color: color-mix(in srgb, var(--cream) 62%, transparent);
+  user-select: all;
+}
+
+/* ─────────── entrada ─────────── */
+@keyframes rise{ from{ opacity:.001; translate: 0 22px } to{ opacity:1; translate: 0 0 } }
+.rise{ animation: rise .9s cubic-bezier(.22,.7,.3,1) both }
+.d1{ animation-delay: .05s } .d2{ animation-delay: .17s }
+.d3{ animation-delay: .29s } .d4{ animation-delay: .41s }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation: none !important; transition-duration: .01ms !important }
+  .rise{ opacity:1; translate: none }
+}
+</style>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="data:image/jpeg;base64,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" alt="Monograma Vintage Club" width="34" height="34">
+      <span>Vintage&nbsp;Club</span>
+    </a>
+    <nav class="links" aria-label="Seções">
+      <a href="#colecao">Coleção</a>
+      <a href="#drop">Próximo drop</a>
+      <a href="#curadoria">Curadoria</a>
+      <a href="#instagram">Instagram</a>
+    </nav>
+    <a class="btn ghost" href="#colecao">Explorar <span class="arw" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ░░ HERO ░░ -->
+  <section class="hero">
+    <div class="disc grooves" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-top rise d1">
+        <p class="eyebrow">Coleção 003 — The Archive</p>
+        <p class="meta">No ar desde 18.10.2026</p>
+      </div>
+
+      <h1 class="display rise d2">
+        Vintage<br>Club
+        <span class="it">Exclusive Collection</span>
+      </h1>
+
+      <div class="hero-foot">
+        <p class="lede rise d3">
+          Peças selecionadas para quem não segue tendências. Cria as próprias.
+          Uma unidade de cada. Quando sai, não volta.
+        </p>
+        <a class="btn rise d4" href="#colecao">Explorar coleção <span class="arw" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ COLEÇÃO ░░ -->
+  <section class="band" id="colecao">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <p class="eyebrow">The Private Collection</p>
+          <h2>Poucas peças.<br>Nenhuma igual.</h2>
+          <p>Garimpo autoral em lotes fechados. Cada peça passa por higienização,
+             conferência de etiqueta e classificação de estado antes de entrar na coleção.</p>
+        </div>
+        <p class="meta" id="contador-pecas">6 peças · 4 disponíveis</p>
+      </div>
+
+      <div class="pieces" id="grade"></div>
+    </div>
+  </section>
+
+  <!-- ░░ EDITORIAL ░░ -->
+  <section class="band sand">
+    <div class="wrap editorial">
+      <div class="ed-copy">
+        <h2>More than clothing<em>An attitude.</em></h2>
+        <p>
+          Roupa de segunda mão carrega tempo. A trama já desbotou onde alguém
+          encostou o ombro, o punho cedeu no lugar certo, a etiqueta diz um ano
+          que não volta mais. É isso que não se fabrica.
+        </p>
+        <p>
+          A Vintage Club não repõe estoque: encontra. Cada drop é o resultado de
+          semanas de garimpo em lotes, brechós e acervos particulares — e termina
+          quando a última peça sai.
+        </p>
+      </div>
+      <div class="ed-stack" aria-hidden="true">
+        <div class="frame"></div>
+        <div class="frame"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ DROP ░░ -->
+  <section class="band" id="drop">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <p class="eyebrow">Upcoming Drops</p>
+          <h2>Next drop</h2>
+        </div>
+        <p class="meta">Acesso antecipado para membros</p>
+      </div>
+
+      <div class="drop">
+        <div>
+          <p class="eyebrow">Collection 004</p>
+          <h3>Workwear<br>Anos 90</h3>
+          <p class="when" id="data-drop">01.11.2026 — 20:00 (horário de Brasília)</p>
+        </div>
+        <div class="clock" id="relogio" role="timer" aria-live="off">
+          <div><strong data-u="d">—</strong><span>Dias</span></div>
+          <div><strong data-u="h">—</strong><span>Horas</span></div>
+          <div><strong data-u="m">—</strong><span>Min</span></div>
+          <div><strong data-u="s">—</strong><span>Seg</span></div>
+        </div>
+      </div>
+
+      <div class="drop-cta">
+        <a class="btn ghost" id="btn-avise" href="#" target="_blank" rel="noopener">
+          Avise-me <span class="arw" aria-hidden="true">→</span>
+        </a>
+        <p>Mandamos o link do drop na DM, 30 minutos antes de abrir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ CURADORIA ░░ -->
+  <section class="band" id="curadoria">
+    <div class="wrap" style="padding-top:0">
+      <div class="shead">
+        <div>
+          <p class="eyebrow">Curated with intention</p>
+          <h2>Três critérios,<br>sem exceção.</h2>
+          <p>Nenhuma peça entra na coleção sem passar pelos três. É o que separa
+             garimpo de estoque.</p>
+        </div>
+      </div>
+
+      <div class="criteria">
+        <article class="crit">
+          <div class="ring" aria-hidden="true"></div>
+          <h3>Procedência</h3>
+          <p>Etiqueta original conferida: marca, país de fabricação e código de
+             período. Reprodução e reissue não entram.</p>
+        </article>
+        <article class="crit">
+          <div class="ring" aria-hidden="true"></div>
+          <h3>Estado</h3>
+          <p>Classificação de A a C. Grau A é peça sem uso aparente; B e C vêm com
+             as marcas de uso descritas uma a uma na ficha.</p>
+        </article>
+        <article class="crit">
+          <div class="ring" aria-hidden="true"></div>
+          <h3>Raridade</h3>
+          <p>Modelo descontinuado, tiragem curta ou corte que a marca não repete.
+             Se é fácil de achar, não é coleção.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ INSTAGRAM ░░ -->
+  <section class="band" id="instagram">
+    <div class="wrap" style="padding-top:0">
+      <div class="shead">
+        <div>
+          <p class="eyebrow">Follow the club</p>
+          <h2>@vintageclubr</h2>
+        </div>
+        <p class="meta">Drops anunciados primeiro no stories</p>
+      </div>
+
+      <div class="ig-grid" aria-hidden="true">
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      </div>
+
+      <div class="ig-foot">
+        <a class="btn ghost" id="btn-ig" href="#" target="_blank" rel="noopener">
+          Seguir no Instagram <span class="arw" aria-hidden="true">→</span>
+        </a>
+        <p class="meta" style="color:color-mix(in srgb, var(--cream) 45%, transparent)">
+          Atendimento e reservas pela DM
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ CTA FINAL ░░ -->
+  <section class="closing">
+    <div class="disc grooves" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2>Welcome<br>to the club.</h2>
+      <p>A coleção 003 está no ar. Quando a peça sai da grade, ela não volta.</p>
+      <a class="btn" href="#colecao">Explorar coleção <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="data:image/jpeg;base64,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" alt="" width="28" height="28" style="width:28px;height:28px">
+      <span style="font-size:11px">Vintage&nbsp;Club</span>
+    </a>
+    <nav class="fnav" aria-label="Rodapé">
+      <a href="#colecao">Coleção</a>
+      <a href="#drop">Drops</a>
+      <a href="#curadoria">Curadoria</a>
+      <a id="ig-foot-link" href="#" target="_blank" rel="noopener">@vintageclubr</a>
+    </nav>
+    <p class="meta">© 2026 Vintage Club</p>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   VINTAGE CLUB — pontos de edição
+   Tudo o que muda no dia a dia está aqui em cima.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 1. CONTATO ─────────────────────────────────────────────────────
+   Para atender por WhatsApp, troque null pelo número com DDI e DDD,
+   só dígitos. Ex.: whatsapp: '5511987654321'
+   Com null, "Solicitar peça" e "Avise-me" vão para a DM do Instagram. */
+const CONTATO = {
+  whatsapp: null,
+  instagram: 'vintageclubr'
+};
+
+/* 2. PRÓXIMO DROP ────────────────────────────────────────────────
+   Data ISO com fuso de Brasília (-03:00). */
+const DROP = '2026-11-01T20:00:00-03:00';
+
+/* 3. PEÇAS ───────────────────────────────────────────────────────
+   foto: caminho da imagem (ex.: 'fotos/carhartt-01.jpg'). Deixe ''
+   para mostrar o padrão de sulcos no lugar.
+   estado: 'A', 'B' ou 'C'. vendida: true some com o botão. */
+const PECAS = [
+  { nome:'Detroit Jacket Blanket-Lined', marca:'Carhartt',          ano:'1998',    tam:'M',  estado:'B', preco:1290, vendida:false, foto:'' },
+  { nome:'Eagle Three-Quarter Sleeve',   marca:'Harley-Davidson',   ano:'1994',    tam:'G',  estado:'C', preco:480,  vendida:true,  foto:'' },
+  { nome:'ACG Storm-Fit Windbreaker',    marca:'Nike',              ano:'1996',    tam:'GG', estado:'A', preco:690,  vendida:false, foto:'' },
+  { nome:'501 Selvedge Red Line',        marca:"Levi's",            ano:'Anos 80', tam:'42', estado:'B', preco:520,  vendida:false, foto:'' },
+  { nome:'Rugby Listrado Big Pony',      marca:'Polo Ralph Lauren', ano:'Anos 90', tam:'M',  estado:'A', preco:420,  vendida:true,  foto:'' },
+  { nome:'Track Top Trefoil',            marca:'Adidas Originals',  ano:'1992',    tam:'P',  estado:'B', preco:390,  vendida:false, foto:'' }
+];
+
+/* ══════════════════════════════════════════════════════════════════
+   Daqui para baixo não precisa mexer.
+   ══════════════════════════════════════════════════════════════════ */
+
+const brl = n => n.toLocaleString('pt-BR', { style:'currency', currency:'BRL', maximumFractionDigits:0 });
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const perfilIG = 'https://www.instagram.com/' + CONTATO.instagram + '/';
+const dmIG     = 'https://ig.me/m/' + CONTATO.instagram;
+
+function linkContato(texto){
+  if (CONTATO.whatsapp) return 'https://wa.me/' + CONTATO.whatsapp + '?text=' + encodeURIComponent(texto);
+  return dmIG;
+}
+
+/* ── grade de peças ── */
+document.getElementById('grade').innerHTML = PECAS.map(p => {
+  const msg  = 'Olá! Tenho interesse na peça ' + p.nome + ' (' + p.marca + ', tam. ' + p.tam + ').';
+  const foto = p.foto ? ' style="--foto:url(&quot;' + esc(p.foto) + '&quot;)"' : '';
+  return `
+  <article class="piece${p.vendida ? ' sold' : ''}"${foto}>
+    <div class="shot">
+      <span class="tag${p.vendida ? ' sold' : ''}">${p.vendida ? 'Vendida' : 'Disponível'}</span>
+    </div>
+    <div class="pinfo">
+      <p class="brandname">${esc(p.marca)}</p>
+      <h3>${esc(p.nome)}</h3>
+      <div class="pspec">
+        <span>${esc(p.ano)}</span><span>Tam. ${esc(p.tam)}</span><span>Estado ${esc(p.estado)}</span>
+      </div>
+      <div class="prow">
+        <span class="price">${brl(p.preco)}</span>
+        ${p.vendida
+          ? '<span class="ask" aria-disabled="true">Esgotada</span>'
+          : '<a class="ask" href="' + linkContato(msg) + '" target="_blank" rel="noopener">Solicitar peça</a>'}
+      </div>
+    </div>
+  </article>`;
+}).join('');
+
+const disp = PECAS.filter(p => !p.vendida).length;
+document.getElementById('contador-pecas').textContent =
+  PECAS.length + ' peças · ' + disp + (disp === 1 ? ' disponível' : ' disponíveis');
+
+/* ── links de contato ── */
+document.getElementById('btn-ig').href = perfilIG;
+document.getElementById('ig-foot-link').href = perfilIG;
+document.getElementById('btn-avise').href =
+  linkContato('Olá! Quero ser avisado do próximo drop da Vintage Club.');
+
+/* ── contagem regressiva ── */
+const alvo = new Date(DROP);
+const relogio = document.getElementById('relogio');
+const campos = {
+  d: relogio.querySelector('[data-u="d"]'), h: relogio.querySelector('[data-u="h"]'),
+  m: relogio.querySelector('[data-u="m"]'), s: relogio.querySelector('[data-u="s"]')
+};
+
+const fmtData = new Intl.DateTimeFormat('pt-BR', {
+  day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit',
+  timeZone:'America/Sao_Paulo'
+}).formatToParts(alvo).reduce((o,p) => (o[p.type] = p.value, o), {});
+document.getElementById('data-drop').textContent =
+  `${fmtData.day}.${fmtData.month}.${fmtData.year} — ${fmtData.hour}:${fmtData.minute} (horário de Brasília)`;
+
+function tique(){
+  let resta = Math.floor((alvo - Date.now()) / 1000);
+  if (resta <= 0){
+    relogio.innerHTML = '<div style="min-width:auto"><strong style="font-size:clamp(28px,4vw,46px)">No ar</strong>'
+      + '<span>O drop abriu</span></div>';
+    return clearInterval(id);
+  }
+  const d = Math.floor(resta / 86400); resta %= 86400;
+  const h = Math.floor(resta / 3600);  resta %= 3600;
+  const m = Math.floor(resta / 60);
+  const s = resta % 60;
+  campos.d.textContent = d;
+  campos.h.textContent = String(h).padStart(2,'0');
+  campos.m.textContent = String(m).padStart(2,'0');
+  campos.s.textContent = String(s).padStart(2,'0');
+}
+tique();
+const id = setInterval(tique, 1000);
+</script>
+
+</body>
+</html>

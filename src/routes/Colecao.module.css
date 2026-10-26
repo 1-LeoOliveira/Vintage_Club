@@ -1,0 +1,60 @@
+.capa {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.conteudo {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(60px, 10vw, 120px) clamp(48px, 7vw, 88px);
+}
+
+.voltar {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--cream) 50%, transparent);
+  transition: color 0.3s var(--ease);
+}
+.voltar:hover {
+  color: var(--cream);
+}
+
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  align-items: baseline;
+  padding-block: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 32px);
+}
+
+.titulo {
+  font-size: clamp(44px, 11vw, 140px);
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  font-variation-settings:
+    'opsz' 144,
+    'wght' 430,
+    'SOFT' 20,
+    'WONK' 0;
+}
+
+.sub {
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  font-size: clamp(15px, 1.5vw, 18px);
+  max-width: 40ch;
+  color: color-mix(in srgb, var(--cream) 68%, transparent);
+}
+
+.resumo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin-top: clamp(28px, 4vw, 44px);
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--sand) 16%, transparent);
+  color: color-mix(in srgb, var(--cream) 52%, transparent);
+}

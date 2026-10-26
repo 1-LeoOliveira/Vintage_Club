@@ -1,0 +1,37 @@
+.relogio {
+  display: flex;
+  gap: clamp(18px, 3vw, 40px);
+}
+
+.unidade {
+  text-align: center;
+  min-width: 58px;
+}
+
+.numero {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(38px, 5.4vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  font-variation-settings:
+    'opsz' 120,
+    'wght' 400,
+    'SOFT' 30,
+    'WONK' 0;
+}
+
+.rotulo {
+  display: block;
+  margin-top: 10px;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cream) 45%, transparent);
+}
+
+.aberto .numero {
+  font-size: clamp(28px, 4vw, 46px);
+}

@@ -1,0 +1,83 @@
+.lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding-block: clamp(28px, 4vw, 44px);
+  border-top: 1px solid color-mix(in srgb, var(--sand) 14%, transparent);
+  text-decoration: none;
+  transition: opacity 0.3s var(--ease);
+}
+.item:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--sand) 14%, transparent);
+}
+.item:hover {
+  opacity: 0.72;
+}
+
+@media (max-width: 760px) {
+  .item {
+    grid-template-columns: auto 1fr;
+  }
+  .item .estado {
+    grid-column: 1 / -1;
+  }
+}
+
+.numero {
+  font-family: var(--display);
+  font-size: clamp(32px, 4.6vw, 54px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--cream) 34%, transparent);
+  font-variant-numeric: tabular-nums;
+  font-variation-settings:
+    'opsz' 120,
+    'wght' 300,
+    'SOFT' 40,
+    'WONK' 0;
+}
+
+.nome {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(22px, 2.8vw, 34px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-variation-settings:
+    'opsz' 72,
+    'wght' 420,
+    'SOFT' 40,
+    'WONK' 1;
+}
+.sub {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--cream) 52%, transparent);
+}
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--cream) 50%, transparent);
+}
+.estado[data-estado='no-ar'] {
+  color: var(--brass);
+}
+.ponto {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}

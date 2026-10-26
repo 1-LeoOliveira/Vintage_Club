@@ -1,0 +1,39 @@
+/* O disco de vinil: sulcos concêntricos gigantes atrás do conteúdo.
+   Vive do motivo do próprio monograma. */
+.disco {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  mask-image: radial-gradient(circle, #000 38%, transparent 72%);
+  animation: vc-spin 190s linear infinite;
+}
+
+.disco::after {
+  content: '';
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: var(--sand);
+  opacity: 0.1;
+}
+
+/* à direita, saindo pela borda — usado no herói */
+.lateral {
+  width: min(820px, 105vw);
+  right: -22%;
+  top: 50%;
+  translate: 0 -50%;
+  opacity: 0.62;
+}
+
+/* centralizado e maior — usado no fechamento */
+.central {
+  width: min(1000px, 130vw);
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  opacity: 0.4;
+  animation-duration: 240s;
+}

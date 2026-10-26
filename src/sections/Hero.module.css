@@ -1,0 +1,57 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.conteudo {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(72px, 13vw, 150px) clamp(56px, 9vw, 110px);
+}
+
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  align-items: baseline;
+  padding-bottom: clamp(36px, 6vw, 68px);
+}
+.topo .desde {
+  margin: 0;
+  color: color-mix(in srgb, var(--cream) 48%, transparent);
+}
+
+.titulo {
+  font-size: clamp(52px, 13.5vw, 184px);
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  font-variation-settings:
+    'opsz' 144,
+    'wght' 450,
+    'SOFT' 20,
+    'WONK' 0;
+}
+.titulo .italico {
+  display: block;
+  text-transform: none;
+  font-style: italic;
+  font-size: 0.345em;
+  letter-spacing: -0.01em;
+  color: var(--brass);
+  font-variation-settings:
+    'opsz' 90,
+    'wght' 300,
+    'SOFT' 80,
+    'WONK' 1;
+  margin-top: 0.14em;
+}
+
+.rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 34px;
+  padding-top: clamp(38px, 6vw, 72px);
+}

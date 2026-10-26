@@ -1,0 +1,31 @@
+/* Sistema de design da Vintage Club.
+   Extraído do monograma: espresso + areia + latão, com o sulco de vinil
+   como motivo estrutural. Tema único e assumido (dark). */
+
+:root {
+  /* ── cor ── */
+  --ink: #16100d; /* espresso profundo: o preto quente da marca */
+  --ink-2: #211812; /* superfície elevada sobre o espresso */
+  --brown: #4a382e; /* marrom do monograma */
+  --sand: #d8cbbc; /* areia do logo */
+  --cream: #efe6d9; /* texto sobre escuro */
+  --brass: #b4884a; /* o único acento: detalhe metálico, usado com parcimônia */
+
+  /* ── tipografia ── */
+  --display: 'Fraunces', 'Hoefler Text', Georgia, serif;
+  --sans: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* ── grade ── */
+  --max: 1280px;
+  --gut-l: max(20px, env(safe-area-inset-left, 0px));
+  --gut-r: max(20px, env(safe-area-inset-right, 0px));
+
+  /* ── ritmo vertical das bandas ── */
+  --band-y: clamp(76px, 11vw, 140px);
+  --head-y: clamp(44px, 6vw, 76px);
+
+  /* ── movimento ── */
+  --ease: cubic-bezier(0.22, 0.7, 0.3, 1);
+
+  color-scheme: dark;
+}

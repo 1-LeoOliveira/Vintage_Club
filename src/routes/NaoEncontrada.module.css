@@ -1,0 +1,27 @@
+.tela {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.conteudo {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(96px, 16vw, 200px);
+  text-align: center;
+}
+
+.titulo {
+  margin-top: 20px;
+  font-size: clamp(42px, 9vw, 110px);
+  text-transform: uppercase;
+  font-variation-settings:
+    'opsz' 144,
+    'wght' 420,
+    'SOFT' 20,
+    'WONK' 0;
+}
+
+.texto {
+  margin: 26px auto 38px;
+}

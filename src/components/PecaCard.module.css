@@ -1,0 +1,128 @@
+.peca {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.vendida .moldura {
+  opacity: 0.5;
+}
+
+.linkFoto {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.35s var(--ease);
+}
+.linkFoto:hover {
+  opacity: 0.84;
+}
+
+.selo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 7px 11px;
+  background: var(--brass);
+  color: var(--ink);
+}
+.selo[data-vendida='true'] {
+  background: color-mix(in srgb, var(--ink) 86%, transparent);
+  color: color-mix(in srgb, var(--cream) 60%, transparent);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 18px;
+}
+
+.marca {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.nome {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(19px, 1.9vw, 23px);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  font-variation-settings:
+    'opsz' 40,
+    'wght' 400,
+    'SOFT' 50,
+    'WONK' 1;
+}
+.nome a {
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+.nome a:hover {
+  color: var(--brass);
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-top: 7px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--cream) 50%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+.specs span:not(:last-child)::after {
+  content: ' ·';
+  margin-left: 8px;
+  opacity: 0.6;
+}
+
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 15px;
+  border-top: 1px solid color-mix(in srgb, var(--sand) 13%, transparent);
+}
+
+.preco {
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.acao {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream);
+  border-bottom: 1px solid color-mix(in srgb, var(--brass) 70%, transparent);
+  padding-bottom: 3px;
+  transition:
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+.acao:hover {
+  color: var(--brass);
+  border-color: var(--brass);
+}
+
+.esgotada {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cream) 38%, transparent);
+}
